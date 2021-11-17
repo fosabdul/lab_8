@@ -1,0 +1,56 @@
+<html>  
+    <head>
+
+    <title>Hello Vue</title>
+   <script src="https://unpkg.com/vue@next"></script>
+    
+    </head>
+
+    <body>
+        <div id="app">
+            <h1>Hello Vue Forms</h1>
+
+            <label for="name">Please Enter your name:</label>
+
+            <input v-model="name" id="name">
+
+        
+
+            <p v-if="name"> You name is {{ name}} 
+                <button v-on:click="clear">Clear Input</button>
+            </p>
+            <!-- if there is a name this paragraph will be  rendered -->
+
+            <p v-else> Waiting for the user input</p>
+
+        </div>
+
+
+        <script>
+
+            let app = Vue.createApp({
+
+                data(){
+                    return {
+                        name: ''  // empty string 
+                    }
+                },
+                methods: {
+                    clear(){
+                        this.name = ''
+                    }
+                    // define clear method 
+                }
+
+
+            })
+
+            app.mount('#app')
+
+        </script>   
+
+    </body>
+
+</html>
+
+

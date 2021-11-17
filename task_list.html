@@ -1,0 +1,66 @@
+<html>  
+    <head>
+
+    <title>Hello Vue </title>
+   <script src="https://unpkg.com/vue@next"></script>
+    
+    </head>
+
+    <body>
+        <h1> Hello Vue Loop</h1>
+        <div id="app">
+           
+
+            <label for="task">Please Enter your  to do task:</label>
+            <input id="task" v-model="newTask">
+            <button v-on:click="addTask">Add Task</button>
+            
+            
+            <ul>
+                
+                <li v-for="task in taskList">{{ task }}</li>
+
+                <!-- As you may need to create many array Example you don't know how many array you need to create -->
+                
+                <!-- v for loops in vue templates # can also used to loop over properties of objects -->
+            </ul>
+           
+
+        </div>
+
+
+        <script>
+
+            let app = Vue.createApp({
+
+                data(){
+                    return {
+                        // you can also do basic way of the tasklist 
+
+                        
+                        // taskList['A', 'B', 'c']
+                        newTask: '' , // empty string 
+                        taskList: [] // the task list 
+
+                    }
+                },
+                methods: {
+                    addTask() {
+                       this.taskList.push(this.newTask)
+                       this.newTask = ''   // define clear method 
+                    }
+                   
+                }
+
+
+            })
+
+            app.mount('#app')
+
+        </script>   
+
+    </body>
+
+</html>
+
+

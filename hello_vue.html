@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hello Vue</title>
+        <script src="https://unpkg.com/vue@next"></script>
+    </head>
+
+    <body>
+    
+        <div id="app">
+
+        <!--  All the page that vue will manage willl go here  -->
+            <h1>Hello Vue</h1>
+            <p> original message {{ message }}</p> 
+                
+            <p> Add Excalamation points {{ messageWithExclamationPoints }}</p>
+            
+            <button v-on:click="addExclamation">Add !</button>
+
+            <button v-on:Click='clear'>Clear</button>
+    </div>
+
+    <script>
+
+        let app = Vue.createApp({
+            data() {
+                return {
+                    message: 'This my first Vue app',
+                    maxExclamationPoints: 10,
+                    exclamationPoints : 0
+
+                    
+                }
+            },
+            methods: { //  methods contains a list of functions definition. it's like a function
+                addExclamation() {
+                    if (this.exclamationPoints < this.maxExclamationPoints) {
+                        this.exclamationPoints++ 
+                        // this.message = this.message + '!'  // everytime add one to the original msg
+                        // don't needed now you can take it out so you could show only the Exc msg only 
+                        // if you want both this has to be on  
+                    
+                    
+                } else {
+                    alert('No more exclamation points!')
+                }
+            // clear(){
+            //     this.message = 'hello'
+            //     this.exclamationPoints = 0
+
+            // },
+            // computed: {
+            //     messageWithExclamationPoints() {
+            //         let messageWithPoints = this.message
+            //         for(let x = 0; x < this.exclamationPoints; x++){
+            //             messageWithPoints = messageWithPoints + '!'
+
+            //         }
+            //         return messageWithPoints
+
+            
+            },
+            clear(){
+                
+                this.exclamationPoints = 0
+            }
+        },
+        computed: {
+            messageWithExclamationPoints(){
+                let messageWithPoints  = this.message
+                for ( let x = 0 ; x < this.exclamationPoints ; x++){
+                    messageWithPoints = messageWithPoints + '!'
+                }
+                return messageWithPoints
+            }
+        }
+                    
+                
+        })
+    
+
+        app.mount('#app') // this css selector # connecting vue app to the themplate of the page 
+
+    </script>
+
+    </body>
+</html>
+

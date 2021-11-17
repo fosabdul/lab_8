@@ -1,0 +1,70 @@
+<html>  
+
+<head>
+    <title>Hello Vue</title>
+        <script src="https://unpkg.com/vue@next"></script>
+
+        <style>
+            td, th {
+                width: 25%;
+                text-align: center;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="app">
+            <h1>Shoping Cart</h1>
+
+            <table>
+                <tr>
+                    <th>Item</th>
+                    <th>Unit Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                </tr>
+
+                <tr>
+                    <td>{{ name }}</td>
+                    <td>{{ UnitPrice }}</td>
+                    <td>
+                        <input type="number" id="quantitiy" v-model="quantity">
+                    </td>
+                    <td>${{ Total }}</td>
+                </tr>
+            </table>
+            
+
+        </div>
+
+        <script>
+            let app = Vue.createApp({
+                     data() {
+                         return {
+                             name: 'Hat',
+                             quantity: 1,
+                             UnitPrice: 4.99
+                         }
+
+                     },
+                     computed: {
+                         Total(){
+                             let TotalPrice = this.quantity * this.UnitPrice
+                             let formattedPrice = TotalPrice.toFixed(2) //Compute price to 2 decimal places
+
+                             return formattedPrice
+                         }
+                        //   use a computed property to calculate the total, based on the values of unitPrice and quantity
+
+
+                     },
+                 })
+
+                //  
+
+                 app.mount('#app')
+
+        </script>
+    </body>
+
+</html>
